@@ -1,28 +1,64 @@
-# Spam-Data-Set-Classification
-Prerequisites:
-Make sure you have the following prerequisites installed on your system:
+# Classifiers Evaluation
 
-Python 3.x
-Google Colab or Jupyter Notebook or JupyterLab
-Required Libraries: pandas,numpy,scikit-learn,time,tabulate
+This code evaluates the performance of three classification models: Logistic Regression, Support Vector Machine (SVM), and Random Forest, on a spam email classification task using the SpamBase dataset.
 
-To install the necessary libraries, open your command line interface and execute the following commands:
-pip install pandas
-pip install numpy
-pip install scikit-learn
-pip install time
-pip install tabulate
+## Dataset
 
+The dataset used is the `spambase.data` file, which contains email features and a binary label indicating whether the email is spam or not spam. You can fetch the dataset using the `ucimlrepo` package:
 
-Download the Dataset: extract the dataset named spambase.data form the zip folder and place it in the same folder as the Jupyter notebook.
+```python
+pip install ucimlrepo
+from ucimlrepo import fetch_ucirepo
 
-Jupyter Notebook Setup:
-Open your command line interface and run the command: jupyter notebook
+# fetch dataset
+spambase = fetch_ucirepo(id=94)
 
-Execution Instructions:
+# data (as pandas dataframes)
+X = spambase.data.features
+y = spambase.data.targets
 
-Open the Notebook: Launch the Jupyter Notebook and open the file "ML_assgn_2.ipynb."
-Run the Notebook: Execute the notebook by using the “Run” button in the toolbar.
-Read the Comments:
+# metadata
+print(spambase.metadata)
 
-The code is thoroughly commented, providing explanations for each step. This is done to facilitate easy understanding of the implementation details.
+# variable information
+print(spambase.variables)
+
+# Evaluation Metrics
+The performance of the classifiers is evaluated using the following metrics:
+
+- Accuracy
+- F1-Score
+- Training Time
+
+# Methodology
+The code performs a stratified 10-fold cross-validation on the dataset. For each fold, the following steps are performed:
+
+1. Split the data into training and testing sets.
+2. Train the three classifiers (Logistic Regression, SVM, and Random Forest) on the training set.
+3. Evaluate the performance of the classifiers on the testing set using the above metrics.
+4. Rank the classifiers based on their performance for each metric.
+
+After all folds, the code calculates the average and standard deviation of each metric across the folds. It also calculates the overall ranking of the classifiers based on the average ranking across all metrics.
+
+# Statistical Tests
+The code applies the Friedman test and the Nemenyi post-hoc test to determine if there are significant differences between the classifiers for each metric (accuracy, F1-score, and time). The critical difference for the Nemenyi test is calculated and used to identify pairwise significant differences between classifiers.
+
+# Output
+The code outputs the following:
+
+- Average and standard deviation of each metric for each classifier.
+- Fold-wise performance data for each metric and classifier.
+- Fold-wise ranking data for each metric and classifier.
+- Overall ranking of classifiers based on the average ranking across all metrics.
+- Results of the Friedman and Nemenyi tests for each metric.
+
+# Usage
+To run the code, make sure you have the following dependencies installed:
+
+- NumPy
+- Pandas
+- scikit-learn
+- tabulate
+- ucimlrepo
+
+Run the code, and the output will be printed to the console.
