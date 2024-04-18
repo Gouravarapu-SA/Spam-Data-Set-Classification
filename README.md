@@ -6,7 +6,6 @@ This code evaluates the performance of three classification models: Logistic Reg
 
 The dataset used is the `spambase.data` file, which contains email features and a binary label indicating whether the email is spam or not spam. You can fetch the dataset using the `ucimlrepo` package:
 
-```python
 pip install ucimlrepo
 from ucimlrepo import fetch_ucirepo
 
@@ -21,7 +20,7 @@ y = spambase.data.targets
 print(spambase.metadata)
 
 # variable information
-print(spambase.variables)
+python print(spambase.variables) 
 
 # Evaluation Metrics
 The performance of the classifiers is evaluated using the following metrics:
@@ -62,3 +61,5 @@ To run the code, make sure you have the following dependencies installed:
 - ucimlrepo
 
 Run the code, and the output will be printed to the console.
+
+
