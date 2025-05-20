@@ -1,65 +1,118 @@
-# Classifiers Evaluation
+# 🍷 Classifier Evaluation on Spam Detection (SpamBase Dataset)
 
-This code evaluates the performance of three classification models: Logistic Regression, Support Vector Machine (SVM), and Random Forest, on a spam email classification task using the SpamBase dataset.
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Dataset](https://img.shields.io/badge/Dataset-UCI_SpamBase-orange.svg)
 
-## Dataset
+> This project compares the performance of three machine learning classifiers—**Logistic Regression**, **Support Vector Machine (SVM)**, and **Random Forest**—on the **SpamBase** dataset. The goal is to determine which algorithm performs best in detecting spam emails, using rigorous cross-validation and statistical testing.
 
-The dataset used is the `spambase.data` file, which contains email features and a binary label indicating whether the email is spam or not spam. You can fetch the dataset using the `ucimlrepo` package:
+---
 
+## 📦 Dataset
+
+The dataset used is the [SpamBase dataset](https://archive.ics.uci.edu/ml/datasets/spambase) from the UCI Machine Learning Repository.
+
+### 🔄 How to Fetch
+
+Install and use the `ucimlrepo` package:
+
+```bash
 pip install ucimlrepo
 from ucimlrepo import fetch_ucirepo
 
-# fetch dataset
+# Fetch the dataset
 spambase = fetch_ucirepo(id=94)
 
-# data (as pandas dataframes)
+# Access features and targets
 X = spambase.data.features
 y = spambase.data.targets
 
-# metadata
+# Dataset metadata
 print(spambase.metadata)
+print(spambase.variables)
+```
 
-# variable information
-python print(spambase.variables) 
+---
 
-# Evaluation Metrics
-The performance of the classifiers is evaluated using the following metrics:
+# 📊 Evaluation Metrics
 
-- Accuracy
-- F1-Score
-- Training Time
+Each model is evaluated using the following metrics:
 
-# Methodology
-The code performs a stratified 10-fold cross-validation on the dataset. For each fold, the following steps are performed:
+- ✅ **Accuracy**
+- 🎯 **F1-Score**
+- ⏱️ **Training Time**
 
-1. Split the data into training and testing sets.
-2. Train the three classifiers (Logistic Regression, SVM, and Random Forest) on the training set.
-3. Evaluate the performance of the classifiers on the testing set using the above metrics.
-4. Rank the classifiers based on their performance for each metric.
+---
 
-After all folds, the code calculates the average and standard deviation of each metric across the folds. It also calculates the overall ranking of the classifiers based on the average ranking across all metrics.
+# 🧪 Methodology
 
-# Statistical Tests
-The code applies the Friedman test and the Nemenyi post-hoc test to determine if there are significant differences between the classifiers for each metric (accuracy, F1-score, and time). The critical difference for the Nemenyi test is calculated and used to identify pairwise significant differences between classifiers.
+A **Stratified 10-Fold Cross-Validation** is applied:
 
-# Output
-The code outputs the following:
+1. Split the dataset into 10 stratified folds.
+2. Train **Logistic Regression**, **SVM**, and **Random Forest** on each fold.
+3. Measure **accuracy**, **F1-score**, and **training time**.
+4. Rank the classifiers for each metric per fold.
+5. Calculate:
+   - **Mean & standard deviation** for each metric
+   - **Overall average rank across metrics**
 
-- Average and standard deviation of each metric for each classifier.
-- Fold-wise performance data for each metric and classifier.
-- Fold-wise ranking data for each metric and classifier.
-- Overall ranking of classifiers based on the average ranking across all metrics.
-- Results of the Friedman and Nemenyi tests for each metric.
+---
 
-# Usage
-To run the code, make sure you have the following dependencies installed:
+# 📈 Statistical Significance Testing
 
-- NumPy
-- Pandas
-- scikit-learn
-- tabulate
-- ucimlrepo
+To determine whether differences between models are statistically significant:
 
-Run the code, and the output will be printed to the console.
+- 🧮 **Friedman Test** is used to compare multiple algorithms across folds.
+- 📐 **Nemenyi Post-hoc Test** evaluates pairwise significance.
+- 🔍 **Critical Difference (CD)** is calculated and used to interpret the Nemenyi test results.
+
+---
+
+# 🧾 Output Summary
+
+The code generates:
+
+- 📊 **Average and standard deviation** of each metric for each classifier  
+- 📋 **Fold-wise metrics and ranks**  
+- 🏆 **Overall classifier ranking**  
+- 📐 **Friedman and Nemenyi test results** with interpretation  
+
+---
+
+# ⚙️ Dependencies
+
+Install required Python packages before running the code:
+
+```bash
+pip install numpy pandas scikit-learn tabulate ucimlrepo
+```
+
+🚀 Usage
+Once dependencies are installed, run the Python script.
+Output will be displayed directly in the console, including metrics, rankings, and statistical test results.
+
+
+---
+
+
+📜 License
+This project is licensed under the MIT License.
+
+
+---
+
+
+🙌 Acknowledgments
+-UCI Machine Learning Repository
+-The Python open-source ML ecosystem
+
+
+---
+
+
+📫 Contact
+For questions or feedback, reach out at:
+**📧 akhilsai96@gmail.com**
+
 
 
