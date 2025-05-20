@@ -87,7 +87,10 @@ Install required Python packages before running the code:
 pip install numpy pandas scikit-learn tabulate ucimlrepo
 ```
 
-#🚀 Usage
+---
+
+
+##🚀 Usage
 Once dependencies are installed, run the Python script.
 Output will be displayed directly in the console, including metrics, rankings, and statistical test results.
 
@@ -95,14 +98,14 @@ Output will be displayed directly in the console, including metrics, rankings, a
 ---
 
 
-#📜 License
+##📜 License
 This project is licensed under the MIT License.
 
 
 ---
 
 
-#🙌 Acknowledgments
+##🙌 Acknowledgments
 -UCI Machine Learning Repository
 -The Python open-source ML ecosystem
 
@@ -110,7 +113,7 @@ This project is licensed under the MIT License.
 ---
 
 
-#📫 Contact
+##📫 Contact
 For questions or feedback, reach out at:
 **📧 akhilsai96@gmail.com**
 
